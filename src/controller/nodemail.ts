@@ -1,9 +1,7 @@
-var hbs = require('handlebars');
-var handlebars = require('handlebars');
-var fs = require('fs');
-const path = require('path'); 
-//var fooJson = require('path/to/foo.json');
-var nodemailer = require('nodemailer');
+import nodemailer from 'nodemailer';
+import handlebars from 'handlebars';
+import fs from 'fs';
+import path from 'path';
 
 module.exports = async (nome: string, email: string, assunto: string, mensagem: string) => {
     const smtpTransport = nodemailer.createTransport({
@@ -16,9 +14,9 @@ module.exports = async (nome: string, email: string, assunto: string, mensagem: 
         },
     })
     
-    var usuario = {
-        remetente: `${nome} <${email}>`,
-        destinatario: `Samuel de Sousa Dias <samukdias97@gmail.com>`,
+    const usuario = {
+        nome: nome,
+        email: email,
         assunto: assunto,
         mensagem: mensagem,
     }
@@ -26,13 +24,12 @@ module.exports = async (nome: string, email: string, assunto: string, mensagem: 
     const templateFileContent = await fs.promises.readFile(path1, {
         encoding: 'utf-8'
     })
-    var parseTemplate = handlebars.compile(templateFileContent);
-
-    var html = parseTemplate(usuario);
+    const parseTemplate = handlebars.compile(templateFileContent);
+    const html = parseTemplate(usuario);
 
     const mail = {
         from: {
-            name: `${nome} - ${email}`,
+            name: nome,
             address: email,
         },
         to: 'samukdias97@gmail.com',
@@ -52,5 +49,4 @@ module.exports = async (nome: string, email: string, assunto: string, mensagem: 
                 return reject(error);
             });
     })
-    
 }

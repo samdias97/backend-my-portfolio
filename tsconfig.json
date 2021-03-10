@@ -1,7 +1,5 @@
 {
   "compilerOptions": {
-    "jsx": "react",
-
     "target": "es5",
     "module": "commonjs",
      "outDir": "./dist",

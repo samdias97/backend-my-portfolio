@@ -2,6 +2,9 @@ import nodemailer from 'nodemailer';
 import handlebars from 'handlebars';
 import fs from 'fs';
 import path from 'path';
+import dotenv from 'dotenv';
+
+dotenv.config();
 
 module.exports = async (nome: string, email: string, assunto: string, mensagem: string) => {
     const smtpTransport = nodemailer.createTransport({
@@ -9,8 +12,8 @@ module.exports = async (nome: string, email: string, assunto: string, mensagem: 
         port: 587,
         secure: false,
         auth: {
-            user: 'samuel.myportfolio@gmail.com',
-            pass: 'samuk1415'
+            user: process.env.MY_EMAIL,
+            pass: process.env.MY_PASSWORD
         },
     })
     
@@ -32,7 +35,7 @@ module.exports = async (nome: string, email: string, assunto: string, mensagem: 
             name: nome,
             address: email,
         },
-        to: 'samuel.myportfolio@gmail.com',
+        to: process.env.MY_EMAIL,
         subject: `${assunto} - My Portfolio`,
         text: mensagem,
         html: html,

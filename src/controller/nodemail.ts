@@ -9,7 +9,7 @@ module.exports = async (nome: string, email: string, assunto: string, mensagem: 
         port: 587,
         secure: false,
         auth: {
-            user: 'samukdias97@gmail.com',
+            user: 'samuel.myportfolio@gmail.com',
             pass: 'samuk1415'
         },
     })
@@ -32,7 +32,7 @@ module.exports = async (nome: string, email: string, assunto: string, mensagem: 
             name: nome,
             address: email,
         },
-        to: 'samukdias97@gmail.com',
+        to: 'samuel.myportfolio@gmail.com',
         subject: `${assunto} - My Portfolio`,
         text: mensagem,
         html: html,

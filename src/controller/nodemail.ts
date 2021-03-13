@@ -2,9 +2,6 @@ import nodemailer from 'nodemailer';
 import handlebars from 'handlebars';
 import fs from 'fs';
 import path from 'path';
-import dotenv from 'dotenv';
-
-dotenv.config();
 
 module.exports = async (nome: string, email: string, assunto: string, mensagem: string) => {
     const smtpTransport = nodemailer.createTransport({

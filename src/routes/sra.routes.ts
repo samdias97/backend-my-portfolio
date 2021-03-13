@@ -3,7 +3,6 @@ const routes = Router();
 
 routes.get('/', (req, res, next) => {
   res.json({message: "Tudo ok por aqui!"});
-  next();
 })
 
 routes.post('/send', (req, res, next) => {
